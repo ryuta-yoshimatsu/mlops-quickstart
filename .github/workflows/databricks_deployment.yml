@@ -13,7 +13,7 @@ env:
 jobs:
   deploy:
     name: Deploy to Databricks
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, mlops-runner]
     outputs:
       target-environment: ${{ steps.environment.outputs.target }}
     
@@ -86,7 +86,7 @@ jobs:
 
   post-deployment:
     name: Post-deployment verification
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, mlops-runner]
     needs: deploy
     if: success()
     

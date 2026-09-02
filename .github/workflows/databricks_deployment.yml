@@ -8,7 +8,6 @@ on:
 
 env:
   DATABRICKS_HOST: ${{ secrets.WORKSPACE_HOST_NAME }}
-  PYTHON_VERSION: '3.9'
 
 jobs:
   deploy:
@@ -20,15 +19,14 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-        
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: ${{ env.PYTHON_VERSION }}
-          
-      - name: Install Databricks CLI
+
+      - name: Ensure Databricks CLI is available
         run: |
-          curl -fsSL https://raw.githubusercontent.com/databricks/setup-cli/master/install.sh | sh
+          if command -v databricks >/dev/null 2>&1; then
+            echo "Databricks CLI already installed: $(databricks --version)"
+          else
+            curl -fsSL https://raw.githubusercontent.com/databricks/setup-cli/master/install.sh | sh
+          fi
           
       - name: Determine target environment
         id: environment

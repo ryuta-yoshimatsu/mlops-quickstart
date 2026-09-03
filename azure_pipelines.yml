@@ -5,6 +5,7 @@ trigger:
       - master
 
 variables:
+  - group: databricks-deploy
   - name: databricksHost
     value: '$(WORKSPACE_HOST_NAME)'
   - name: pythonVersion

@@ -1,5 +1,7 @@
 # Databricks MLOps Quickstart
 
+<!-- Deployed via Azure DevOps CI/CD pipeline -->
+
 > [YouTube video: watch now!](https://www.youtube.com/watch?v=8lUbYTXJHe4)
 <img src="http://img.youtube.com/vi/8lUbYTXJHe4/maxresdefault.jpg" alt="YouTube video - Watch now!" width="400"/>
 
